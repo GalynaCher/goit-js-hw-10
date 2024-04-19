@@ -37,9 +37,9 @@ const promise = (state, delay) => {
 
 // set event listener on the form fields    
 form.addEventListener("input", () => { 
-    // define state value
+    // define State value
     stateValue = selectedState.value;
-    // define delay value
+    // define Delay value
     if (delayInput.value) {
         (delayInput.value >= 0) ?
             (
@@ -54,11 +54,11 @@ form.addEventListener("input", () => {
     } else { submitBtn.disabled = true; };
 });
 
-// set event listener on Create Notification button
+// set event listener on the Create Notification button
 form.addEventListener("submit", e => { 
     // prevent page reload on submit
     e.preventDefault();
-    // Create promise
+    // create promise
     promise(stateValue, delayValue)
         .then(() => { 
             console.log("Promise fulfilled successfully");

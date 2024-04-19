@@ -90,9 +90,9 @@ startBtn.addEventListener("click", () => {
         // updating timer fields
         valuesArray.forEach((element) => {
             if (dateTime.hasOwnProperty(Object.keys(element.dataset)[0])) {
-                // formats values before updating timer fields
+                // formatting values before updating timer fields
                 let timerValue = addLeadingZero(dateTime[(Object.keys(element.dataset)[0])]);
-                // updates a timer field
+                // updating timer field
                 element.textContent = timerValue;
             }
         });
