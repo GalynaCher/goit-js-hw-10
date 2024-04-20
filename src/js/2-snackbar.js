@@ -12,24 +12,16 @@ const submitBtn = document.querySelector(".submit-button");
 
 // init variables
 let delayValue; 
-let stateValue;
+let stateValue = "fulfilled";
 
 // declare promise function
 const promise = (state, delay) => { 
         return new Promise((resolve, reject) => { 
             setTimeout(() => { 
                 if (state === "fulfilled") {
-                    resolve(
-                        iziToast.success({
-                            title: 'OK',
-                            message: `Fulfilled promise in ${delay} ms`
-                        }));
+                    resolve("success");
                 } else if (state === "rejected") { 
-                    reject(
-                         iziToast.error({
-                            title: 'Error',
-                            message: `Rejected promise in ${delay} ms`
-                        }));
+                    reject("error");
                 }
             }, delay);
         });
@@ -62,8 +54,16 @@ form.addEventListener("submit", e => {
     promise(stateValue, delayValue)
         .then(() => { 
             console.log("Promise fulfilled successfully");
+            iziToast.success({
+                            title: 'OK',
+                            message: `Fulfilled promise in ${delayValue} ms`
+                        });
         })
         .catch(() => { 
             console.error("Promise rejected");
+            iziToast.error({
+                            title: 'Error',
+                            message: `Rejected promise in ${delayValue} ms`
+                        });
         });
 });

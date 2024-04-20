@@ -23,7 +23,6 @@ inputElement.disabled = false;
 
 // init variables
 let userSelectedDate;
-const todayDate = Date.now();
 
 // settings for flatpickr
 const options = {
@@ -33,7 +32,7 @@ const options = {
   minuteIncrement: 1,
     onClose(selectedDates) {
         // selected date is from the future 
-        (selectedDates[0].getTime() >= todayDate) ? (
+        (selectedDates[0].getTime() >= Date.now()) ? (
             userSelectedDate = selectedDates[0].getTime(),
             startBtn.disabled = false
         ) : ( // selected date is from the past -> Error appears, Start button becomes inactive
@@ -81,7 +80,7 @@ startBtn.addEventListener("click", () => {
     // after the timer starts, the input field becomes inactive
     inputElement.disabled = true;
     // calculate the elapsed time
-    let elapsedTime = userSelectedDate - todayDate;
+    let elapsedTime = userSelectedDate - Date.now();
     // initial object containing timer values
     let dateTime = convertMs(elapsedTime);
     
